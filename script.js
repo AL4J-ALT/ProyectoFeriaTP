@@ -181,7 +181,17 @@ function draw() {
     canChangeDirection = true;
 }
 
+function setupCanvas() {
+    // Obtener el tamaño del canvas definido por CSS
+    const size = canvas.clientWidth;
+    // Ajustar el tamaño para que sea un múltiplo exacto del tamaño de la caja (box)
+    const canvasSize = Math.floor(size / box) * box;
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
+}
+
 function startGame() {
+    setupCanvas();
     game = setInterval(draw, gameSpeed);
     startTimer();
 }
