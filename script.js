@@ -26,6 +26,7 @@ document.getElementById("btn-up").addEventListener("click", () => setDirection("
 document.getElementById("btn-left").addEventListener("click", () => setDirection("left"));
 document.getElementById("btn-down").addEventListener("click", () => setDirection("down"));
 document.getElementById("btn-right").addEventListener("click", () => setDirection("right"));
+document.getElementById("btn-pause").addEventListener("click", togglePause);
 
 function setDirection(newDirection) {
     if (isPaused) return;
@@ -60,6 +61,10 @@ function togglePause() {
         clearInterval(timerInterval);
         pauseMenu.style.display = 'flex';
     } else {
+        // Si el menú de pausa estaba visible, lo ocultamos y reiniciamos el juego
+        if (pauseMenu.style.display === 'flex') {
+            pauseMenu.style.display = 'none';
+        }
         game = setInterval(draw, gameSpeed);
         startTimer();
         pauseMenu.style.display = 'none';

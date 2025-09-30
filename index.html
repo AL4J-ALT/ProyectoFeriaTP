@@ -9,16 +9,18 @@
     </head>
     <body>
         <div class="background-text">SNAKE</div>
+        <div class="game-info">
+            <div class="score" id="score">0 puntos</div>
+            <div class="timer" id="timer">2:00</div>
+            <div class="speed" id="speed">velocidad actual:🐢</div> 
+        </div>
         <div class="game-container">
          <canvas id="gameCanvas" width="400" height="400"></canvas>
-         <div class="timer" id="timer">2:00</div>
-         <div class="score" id="score">0 puntos</div>
-         <div class="speed" id="speed">velocidad actual:🐢</div> 
          <div class="pause" id="pause">Presiona 'SPACE' para pausar</div>
          <div id="pause-menu" style="display: none;">
             <div class="pause-menu-content">
                 <h2>PAUSA</h2>
-                <p>Presiona 'SPACE' para reanudar</p>
+                <p>Presiona 'ESPACIO' para continuar</p>
             </div>
         </div>
         </div>
@@ -30,6 +32,9 @@
                 <button id="btn-left">◄</button>
                 <button id="btn-down">▼</button>
                 <button id="btn-right">►</button>
+            </div>
+            <div class="row">
+                <button id="btn-pause">❚❚</button>
             </div>
         </div>
         <script src="script.js"></script>
