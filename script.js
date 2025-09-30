@@ -14,6 +14,7 @@ let isPaused = false;
 const scoreText = document.getElementById("score");
 const speedText = document.getElementById("speed");
 const pauseMenu = document.getElementById("pause-menu");
+const gameOverMenu = document.getElementById("game-over-menu");
 let timeLeft = 120;
 const timerEl = document.getElementById("timer");
 let timerInterval;
@@ -27,6 +28,7 @@ document.getElementById("btn-left").addEventListener("click", () => setDirection
 document.getElementById("btn-down").addEventListener("click", () => setDirection("down"));
 document.getElementById("btn-right").addEventListener("click", () => setDirection("right"));
 document.getElementById("btn-pause").addEventListener("click", togglePause);
+document.getElementById("restart-button").addEventListener("click", () => location.reload());
 
 function setDirection(newDirection) {
     if (isPaused) return;
@@ -38,6 +40,16 @@ function setDirection(newDirection) {
     }
 }
 
+function showGameOver(message) {
+    clearInterval(game);
+    clearInterval(timerInterval);
+    
+    document.getElementById("game-over-message").textContent = message;
+    document.getElementById("final-score").textContent = `Puntuación final: ${score}`;
+    
+    gameOverMenu.style.display = 'flex';
+}
+
 function startTimer() {
     timerInterval = setInterval(() => {
         timeLeft--;
@@ -47,9 +59,7 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            clearInterval(game);
-            alert("¡Se acabó el tiempo! Puntuación: " + score);
-            location.reload();
+            showGameOver("¡Se acabó el tiempo!");
         }
     }, 1000);
 }
@@ -158,10 +168,7 @@ function draw() {
 
     // Comprobar colisiones
     if (headX < 0 || headY < 0 || headX >= canvas.width || headY >= canvas.height || collision({ x: headX, y: headY }, snake)) {
-        clearInterval(game);
-        clearInterval(timerInterval);
-        alert(`¡Fin del juego! Has chocado. Puntuación: ${score}`);
-        location.reload();
+        showGameOver("¡Has chocado!");
         return; // Detener la ejecución de la función
     }
 
