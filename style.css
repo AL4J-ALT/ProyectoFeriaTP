@@ -25,24 +25,32 @@ body {
     aspect-ratio: 1 / 1;
     height: auto;
 }
-.game-info {
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
-    max-width: 400px;
-    margin-bottom: 10px;
-    color: white;
-    font-size: 18px;
+.timer {
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    color: greenyellow;
+    font-size: 24px; /* Corregido el typo */
     font-weight: bold;
 }
-.timer {
-    color: greenyellow;
-}
 .score {
-    color: #00ffcc;
+    position: absolute;
+    top: -30px; /* Posicionado arriba del game-container */
+    left: 0px;
+    color: blue;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 24px;
+    font-weight: bold;
 }
 .speed {
+    text-decoration: underline;
+    position:absolute;
+    bottom: -65px; /* Posicionado abajo del game-container */
+    left: 10px;
     color: white;
+    font-size: 24px;
+    font-weight: bold;
 }
 .pause {
     position: absolute;
@@ -90,12 +98,27 @@ body {
     .pause {
         display: none;
     }
-    .game-info {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        font-size: 16px;
-        gap: 5px;
+    /* Ajustes para los textos en móvil */
+    .timer {
+        top: 10px; /* Mover más cerca del borde superior */
+        right: 5px;
+        font-size: 18px;
+    }
+    .score {
+        top: -25px; /* Ajustar ligeramente */
+        left: 5px;
+        font-size: 18px;
+        /* Mantener fondo y borde para visibilidad */
+    }
+    .speed {
+        bottom: -45px; /* Ajustar ligeramente */
+        left: 5px;
+        font-size: 18px;
+    }
+    /* Asegurar que el game-container esté centrado y tenga espacio */
+    .game-container {
+        margin-top: 10px; /* Espacio de los elementos superiores */
+        margin-bottom: 10px; /* Espacio de los controles móviles */
     }
 }
 
